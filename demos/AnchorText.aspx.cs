@@ -22,7 +22,7 @@ public partial class AnchorText : System.Web.UI.Page
         if (!IsPostBack)
         {
             primarySignerSection.Visible = true;
-            jointSignerSection.Visible = true;
+            jointSignerSection.Visible = false;
 
             button.Visible = true;
             uploadButton.InnerText = "Upload";
