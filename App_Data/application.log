@@ -1,0 +1,86 @@
+2015-03-18 23:24:58,006 [6] INFO  _Default 
+----------------------------------------
+
+2015-03-18 23:24:58,013 [6] ERROR _Default One or both of Username and Password are invalid. 
+2015-03-18 23:24:58,017 [6] ERROR _Default 
+Server stack trace: 
+   at System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at ServiceReference1.DSAPIServiceSoap.RequestTemplates(RequestTemplatesRequest request)
+   at ServiceReference1.DSAPIServiceSoapClient.ServiceReference1.DSAPIServiceSoap.RequestTemplates(RequestTemplatesRequest request) in c:\Users\vasu.sampath\AppData\Local\Temp\Temporary ASP.NET Files\vs\c5fcb7fe\4a61931f\App_WebReferences.4b2vwgjp.0.cs:line 15404
+   at ServiceReference1.DSAPIServiceSoapClient.RequestTemplates(String AccountID, Boolean IncludeAdvancedTemplates) in c:\Users\vasu.sampath\AppData\Local\Temp\Temporary ASP.NET Files\vs\c5fcb7fe\4a61931f\App_WebReferences.4b2vwgjp.0.cs:line 15411
+   at _Default.getTemplates(Object sender, EventArgs e) in c:\Users\vasu.sampath\git\AdvancedFormsFieldsWorkflow\demos\Default.aspx.cs:line 100
+2015-03-18 23:26:03,632 [8] INFO  _Default 
+----------------------------------------
+
+2015-03-18 23:26:03,632 [8] ERROR _Default One or both of Username and Password are invalid. 
+2015-03-18 23:26:03,633 [8] ERROR _Default 
+Server stack trace: 
+   at System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at ServiceReference1.DSAPIServiceSoap.CreateEnvelopeFromTemplatesAndForms(EnvelopeInformation EnvelopeInformation, CompositeTemplate[] CompositeTemplates, Boolean ActivateEnvelope)
+   at ServiceReference1.DSAPIServiceSoapClient.CreateEnvelopeFromTemplatesAndForms(EnvelopeInformation EnvelopeInformation, CompositeTemplate[] CompositeTemplates, Boolean ActivateEnvelope) in c:\Users\vasu.sampath\AppData\Local\Temp\Temporary ASP.NET Files\vs\c5fcb7fe\4a61931f\App_WebReferences.4b2vwgjp.0.cs:line 15355
+   at _Default.createEnvelope() in c:\Users\vasu.sampath\git\AdvancedFormsFieldsWorkflow\demos\Default.aspx.cs:line 233
+2015-10-05 12:43:12,839 [7] INFO  DynamicFields 
+----------------------------------------
+
+2015-10-05 12:43:12,849 [7] ERROR DynamicFields One or both of Username and Password are invalid. 
+2015-10-05 12:43:12,853 [7] ERROR DynamicFields 
+Server stack trace: 
+   at System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at ServiceReference1.DSAPIServiceSoap.CreateEnvelopeFromTemplatesAndForms(EnvelopeInformation EnvelopeInformation, CompositeTemplate[] CompositeTemplates, Boolean ActivateEnvelope)
+   at ServiceReference1.DSAPIServiceSoapClient.CreateEnvelopeFromTemplatesAndForms(EnvelopeInformation EnvelopeInformation, CompositeTemplate[] CompositeTemplates, Boolean ActivateEnvelope) in c:\Users\vasu.sampath\AppData\Local\Temp\Temporary ASP.NET Files\vs\c5fcb7fe\4a61931f\App_WebReferences.x9dlzzjn.0.cs:line 15355
+   at DynamicFields.createEnvelope() in c:\Users\vasu.sampath\git\AdvancedFormsFieldsWorkflow\demos\DynamicFields.aspx.cs:line 194
+2015-10-05 12:47:52,426 [5] INFO  DynamicFields 
+----------------------------------------
+
+2015-10-05 12:47:53,019 [5] ERROR DynamicFields Freeform signing is not allowed for your account because it conflicts with other settings, please place signing tabs for each signer. 
+2015-10-05 12:48:07,746 [5] ERROR DynamicFields 
+Server stack trace: 
+   at System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at ServiceReference1.DSAPIServiceSoap.CreateEnvelopeFromTemplatesAndForms(EnvelopeInformation EnvelopeInformation, CompositeTemplate[] CompositeTemplates, Boolean ActivateEnvelope)
+   at ServiceReference1.DSAPIServiceSoapClient.CreateEnvelopeFromTemplatesAndForms(EnvelopeInformation EnvelopeInformation, CompositeTemplate[] CompositeTemplates, Boolean ActivateEnvelope) in c:\Users\vasu.sampath\AppData\Local\Temp\Temporary ASP.NET Files\vs\c5fcb7fe\4a61931f\App_WebReferences.x9dlzzjn.0.cs:line 15355
+   at DynamicFields.createEnvelope() in c:\Users\vasu.sampath\git\AdvancedFormsFieldsWorkflow\demos\DynamicFields.aspx.cs:line 194
+2015-10-05 13:10:48,329 [28] INFO  DynamicFields 
+----------------------------------------
+
+2015-10-05 13:10:48,335 [28] ERROR DynamicFields Freeform signing is not allowed for your account because it conflicts with other settings, please place signing tabs for each signer. 
+2015-10-05 13:10:48,339 [28] ERROR DynamicFields 
+Server stack trace: 
+   at System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at ServiceReference1.DSAPIServiceSoap.CreateEnvelopeFromTemplatesAndForms(EnvelopeInformation EnvelopeInformation, CompositeTemplate[] CompositeTemplates, Boolean ActivateEnvelope)
+   at ServiceReference1.DSAPIServiceSoapClient.CreateEnvelopeFromTemplatesAndForms(EnvelopeInformation EnvelopeInformation, CompositeTemplate[] CompositeTemplates, Boolean ActivateEnvelope) in c:\Users\vasu.sampath\AppData\Local\Temp\Temporary ASP.NET Files\vs\c5fcb7fe\4a61931f\App_WebReferences.n8agquat.0.cs:line 15542
+   at DynamicFields.createEnvelope() in c:\Users\vasu.sampath\git\AdvancedFormsFieldsWorkflow\demos\DynamicFields.aspx.cs:line 194

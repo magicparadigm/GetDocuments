@@ -137,6 +137,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="InheritEmailNotificationConfiguration" type="s:boolean" />
           <s:element minOccurs="0" maxOccurs="1" name="HostedSigner" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="IsNotaryTransaction" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="SigningGroupId" type="s:long" />
         </s:sequence>
       </s:complexType>
       <s:simpleType name="RecipientTypeCode">
@@ -214,6 +215,10 @@
           <s:enumeration value="DocuSign6" />
           <s:enumeration value="DocuSign7" />
           <s:enumeration value="DocuSign8" />
+          <s:enumeration value="TAYubiHyojyunKaisyo" />
+          <s:enumeration value="TASourinFude02" />
+          <s:enumeration value="TAAkiko" />
+          <s:enumeration value="TAAsako" />
         </s:restriction>
       </s:simpleType>
       <s:complexType name="RecipientCaptiveInfo">
@@ -409,12 +414,14 @@
           <s:element minOccurs="0" maxOccurs="1" name="FontColor" type="tns:FontColor" />
           <s:element minOccurs="0" maxOccurs="1" name="FontSize" type="tns:FontSize" />
           <s:element minOccurs="0" maxOccurs="1" name="MergeFieldXml" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MetadataXml" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="IncludeNoteInEmail" type="s:boolean" />
           <s:element minOccurs="0" maxOccurs="1" name="IsPaymentAmount" type="s:boolean" />
           <s:element minOccurs="0" maxOccurs="1" name="Formula" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="RoundDecimalPlaces" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="MaxLength" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="SenderRequired" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="RequireAll" type="s:boolean" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="AnchorTab">
@@ -424,6 +431,8 @@
           <s:element minOccurs="0" maxOccurs="1" default="0" name="YOffset" type="s:double" />
           <s:element minOccurs="0" maxOccurs="1" name="Unit" type="tns:UnitTypeCode" />
           <s:element minOccurs="0" maxOccurs="1" name="IgnoreIfNotPresent" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="MatchWholeWord" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="CaseSensitive" type="s:boolean" />
         </s:sequence>
       </s:complexType>
       <s:simpleType name="UnitTypeCode">
@@ -485,6 +494,8 @@
           <s:enumeration value="TimesNewRoman" />
           <s:enumeration value="Trebuchet" />
           <s:enumeration value="Verdana" />
+          <s:enumeration value="MSGothic" />
+          <s:enumeration value="MSMincho" />
         </s:restriction>
       </s:simpleType>
       <s:simpleType name="FontColor">
@@ -1028,6 +1039,7 @@
           <s:element minOccurs="1" maxOccurs="1" name="ShowChanges" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="AddWaterMark" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="IncludeCert" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="CertificateLanguage" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:element name="RequestPDFWithOptionsResponse">
@@ -1066,6 +1078,7 @@
         <s:sequence>
           <s:element minOccurs="1" maxOccurs="1" name="ShowChanges" type="s:boolean" />
           <s:element minOccurs="0" maxOccurs="1" name="DocumentID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CertificateLanguage" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:element name="RequestPDFsWithOptionsResponse">
@@ -1135,6 +1148,21 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="RequestCertificateResult" type="tns:DocumentPDFs" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RequestCertificateWithCertLanguage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EnvelopeID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CertLanguage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RequestCertificateWithCertLanguageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RequestCertificateWithCertLanguageResult" type="tns:DocumentPDFs" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -2874,6 +2902,12 @@
   <wsdl:message name="RequestCertificateSoapOut">
     <wsdl:part name="parameters" element="tns:RequestCertificateResponse" />
   </wsdl:message>
+  <wsdl:message name="RequestCertificateWithCertLanguageSoapIn">
+    <wsdl:part name="parameters" element="tns:RequestCertificateWithCertLanguage" />
+  </wsdl:message>
+  <wsdl:message name="RequestCertificateWithCertLanguageSoapOut">
+    <wsdl:part name="parameters" element="tns:RequestCertificateWithCertLanguageResponse" />
+  </wsdl:message>
   <wsdl:message name="RequestDocumentPDFsSoapIn">
     <wsdl:part name="parameters" element="tns:RequestDocumentPDFs" />
   </wsdl:message>
@@ -3273,6 +3307,10 @@
       <wsdl:input message="tns:RequestCertificateSoapIn" />
       <wsdl:output message="tns:RequestCertificateSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="RequestCertificateWithCertLanguage">
+      <wsdl:input message="tns:RequestCertificateWithCertLanguageSoapIn" />
+      <wsdl:output message="tns:RequestCertificateWithCertLanguageSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="RequestDocumentPDFs">
       <wsdl:input message="tns:RequestDocumentPDFsSoapIn" />
       <wsdl:output message="tns:RequestDocumentPDFsSoapOut" />
@@ -3604,6 +3642,15 @@
     </wsdl:operation>
     <wsdl:operation name="RequestCertificate">
       <soap:operation soapAction="http://www.docusign.net/API/3.0/RequestCertificate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestCertificateWithCertLanguage">
+      <soap:operation soapAction="http://www.docusign.net/API/3.0/RequestCertificateWithCertLanguage" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -4237,6 +4284,15 @@
     </wsdl:operation>
     <wsdl:operation name="RequestCertificate">
       <soap12:operation soapAction="http://www.docusign.net/API/3.0/RequestCertificate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestCertificateWithCertLanguage">
+      <soap12:operation soapAction="http://www.docusign.net/API/3.0/RequestCertificateWithCertLanguage" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

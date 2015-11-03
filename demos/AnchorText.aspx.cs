@@ -198,7 +198,7 @@ public partial class AnchorText : System.Web.UI.Page
                 template.Document.PDFBytes = PDF;
 
                 template.Document.TransformPdfFields = true;
-                template.Document.FileExtension = "pdf";
+                template.Document.FileExtension = "doc";
 
                 //Create envelope with all the composite template information 
                 EnvelopeStatus status = client.CreateEnvelopeFromTemplatesAndForms(envInfo, new CompositeTemplate[] { template }, true);
