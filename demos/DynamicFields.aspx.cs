@@ -21,13 +21,13 @@ public partial class DynamicFields : System.Web.UI.Page
         if (!IsPostBack)
         {
             primarySignerSection.Visible = true;
-            jointSignerSection.Visible = true;
+            jointSignerSection.Visible = false;
 
             button.Visible = true;
             uploadButton.InnerText = "Upload";
             button.InnerText = "Submit";
-            embedSection.Visible = false;
-            jointSignerSection.Visible = false;
+            docusignFrame.Visible = false;
+            docusignFrameIE.Visible = false;
         }
 
         // Add event handlers for the navigation button on each of the wizard pages 
@@ -39,15 +39,17 @@ public partial class DynamicFields : System.Web.UI.Page
     protected void prefill_Click(object sender, EventArgs e)
     {
         firstname.Value = "Warren";
-        lastname.Value = "Bytendorp";
+        lastname.Value = "Buffet";
         email.Value = "magicparadigm@live.com";
-        jointFirstname.Value = "Sheila";
-        jointLastname.Value = "Struthers";
-        jointEmail.Value = "magicparadigm@live.com";
-        tabName.Value = "MyTab";
+        tabName.Value = "PrimarySignerSignature";
         tabPage.Value = "1";
-        xPosition.Value = "10";
-        yPosition.Value = "10";
+        xPosition.Value = "175";
+        yPosition.Value = "315";
+
+        tabName2.Value = "DateSigned";
+        tabPage2.Value = "1";
+        xPosition2.Value = "175";
+        yPosition2.Value = "390";
     }
 
     protected void button_Click(object sender, EventArgs e)
@@ -159,7 +161,6 @@ public partial class DynamicFields : System.Web.UI.Page
                 // Initialize tab properties 
                 Tab tab = new Tab();
                 tab.Type = TabTypeCode.SignHere;
-                
                 tab.XPosition = xPosition.Value;
                 tab.YPosition = yPosition.Value;
                 tab.TabLabel = tabName.Value;
@@ -168,8 +169,18 @@ public partial class DynamicFields : System.Web.UI.Page
                 tab.Name = tabName.Value;
                 tab.PageNumber = tabPage.Value;
 
+                Tab tab2 = new Tab();
+                tab2.Type = TabTypeCode.DateSigned;
 
-                inlineTemplate.Envelope.Tabs = new Tab[] { tab };
+                tab2.XPosition = xPosition2.Value;
+                tab2.YPosition = yPosition2.Value;
+                tab2.TabLabel = tabName2.Value;
+                tab2.RecipientID = "1";
+                tab2.DocumentID = "1";
+                tab2.Name = tabName2.Value;
+                tab2.PageNumber = tabPage2.Value;
+
+                inlineTemplate.Envelope.Tabs = new Tab[] { tab, tab2 };
 
                 template.InlineTemplates = new InlineTemplate[] { inlineTemplate };
 
@@ -219,8 +230,17 @@ public partial class DynamicFields : System.Web.UI.Page
                 clientURLs.OnSigningComplete = url.Substring(0, url.LastIndexOf("/")) + "/EmbeddedSigningComplete0.aspx?envelopeID=" + status.EnvelopeID;
                 recipientToken = client.RequestRecipientToken(status.EnvelopeID, recipients[0].CaptiveInfo.ClientUserId, recipients[0].UserName, recipients[0].Email, assert, clientURLs);
                 Session["envelopeID"] = status.EnvelopeID;
-                embedSection.Visible = true;
-                docusignFrame.Src = recipientToken;
+                if (!Request.Browser.Browser.Equals("InternetExplorer") && (!Request.Browser.Browser.Equals("Safari")))
+                {
+                    docusignFrame.Visible = true;
+                    docusignFrame.Src = recipientToken;
+                }
+                else // Handle IE differently since it does not allow dynamic setting of the iFrame width and height
+                {
+                    docusignFrameIE.Visible = true;
+                    docusignFrameIE.Src = recipientToken;
+                }
+
 
             }
         }

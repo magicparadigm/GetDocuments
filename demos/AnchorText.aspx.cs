@@ -27,8 +27,8 @@ public partial class AnchorText : System.Web.UI.Page
             button.Visible = true;
             uploadButton.InnerText = "Upload";
             button.InnerText = "Submit";
-            embedSection.Visible = false;
-            jointSignerSection.Visible = false;
+            docusignFrame.Visible = false;
+            docusignFrameIE.Visible = false;
         }
 
         // Add event handlers for the navigation button on each of the wizard pages 
@@ -42,9 +42,6 @@ public partial class AnchorText : System.Web.UI.Page
         firstname.Value = "Warren";
         lastname.Value = "Bytendorp";
         email.Value = "magicparadigm@live.com";
-        jointFirstname.Value = "Sheila";
-        jointLastname.Value = "Struthers";
-        jointEmail.Value = "magicparadigm@live.com";
         tabName.Value = "PrimarySignerSignature";
         tab1AnchorText.Value = "~?";
         tab2Name.Value = "PrimarySignerDateSigned";
@@ -228,8 +225,16 @@ public partial class AnchorText : System.Web.UI.Page
                 clientURLs.OnSigningComplete = url.Substring(0, url.LastIndexOf("/")) + "/EmbeddedSigningComplete0.aspx?envelopeID=" + status.EnvelopeID;
                 recipientToken = client.RequestRecipientToken(status.EnvelopeID, recipients[0].CaptiveInfo.ClientUserId, recipients[0].UserName, recipients[0].Email, assert, clientURLs);
                 Session["envelopeID"] = status.EnvelopeID;
-                embedSection.Visible = true;
-                docusignFrame.Src = recipientToken;
+                if (!Request.Browser.Browser.Equals("InternetExplorer") && (!Request.Browser.Browser.Equals("Safari")))
+                {
+                    docusignFrame.Visible = true;
+                    docusignFrame.Src = recipientToken;
+                }
+                else // Handle IE differently since it does not allow dynamic setting of the iFrame width and height
+                {
+                    docusignFrameIE.Visible = true;
+                    docusignFrameIE.Src = recipientToken;
+                }
 
             }
         }
