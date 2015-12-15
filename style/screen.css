@@ -756,11 +756,12 @@ body.finance {
 body.finance header {
   width:100%;
   height:100px;
-  background:url(../img/finance/topbg.png)
+  /*background:url(../img/finance/topbg.png)*/
+  background-color:#0085bd;
 }
 
 body.finance header .navbar-mini a {
-  color:#444;
+  color:white;
   font-weight:600
 }
 
