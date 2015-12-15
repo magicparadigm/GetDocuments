@@ -42,7 +42,7 @@
             <nav class="navbar">
                 <div class="navbar-mini">
                     <ul>
-                        <li><a href="https://github.com/magicparadigm/AdvancedFormsFieldsWorkflow">Source Code</a></li>
+                        <li><a href="https://github.com/magicparadigm/GetDocuments">Source Code</a></li>
                         <li><a href="https://www.docusign.com/developer-center">DocuSign DevCenter</a></li>
                     </ul>
                 </div>
